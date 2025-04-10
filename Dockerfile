@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
     git \
     wget \
     curl \
+    bc \
+    dwarves \
     && apt-get clean
 
 # Set working directory
