@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     bc \
     dwarves \
+    kmod \
     && apt-get clean
 
 # Set working directory

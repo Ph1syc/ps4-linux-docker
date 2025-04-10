@@ -25,8 +25,7 @@ cd ../../..
 sed -i 's,CONFIG_EXTRA_FIRMWARE_DIR="/lib/firmware",CONFIG_EXTRA_FIRMWARE_DIR="lib/firmware",g' .config
 # Build the kernel
 make -j$(nproc)
-# Install the kernel modules
-make modules_install
 # Make bzImage
 make bzImage
+cp arch/x86/boot/bzImage /kernel/linux/
 echo "Kernel build completed successfully!"
