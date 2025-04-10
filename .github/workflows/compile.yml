@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout this repository (current repo)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Clone the target Linux repo
         run: |
@@ -46,7 +46,7 @@ jobs:
           make bzImage
 
       - name: Upload bzImage as an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bzImage
           path: linux/arch/x86/boot/bzImage
