@@ -34,4 +34,4 @@ COPY scripts/ /usr/local/bin/
 RUN chmod +x /usr/local/bin/*.sh
 
 # Build kernel
-CMD ["/usr/local/bin/build-kernel.sh"]
+CMD ["/usr/local/bin/build.sh"]
