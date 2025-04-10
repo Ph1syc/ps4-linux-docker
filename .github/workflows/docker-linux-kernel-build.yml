@@ -9,14 +9,14 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Build Docker image
       run: docker build -t ps4-linux-docker .
 
     - name: Run Docker container to build kernel
       run: |
-        docker run --rm -v "$(pwd)/artifacts:/kernel/linux/artifacts" ps4-linux-docker
+        docker run --rm -v  "$(pwd)/artifacts:/kernel/linux/artifacts" -v "$(pwd)/config:/kernel/linux/config" -v ps4-linux-docker
         
     - name: Upload bzImage artifact
       uses: actions/upload-artifact@v4
