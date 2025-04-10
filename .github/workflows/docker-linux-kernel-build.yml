@@ -30,8 +30,8 @@ jobs:
       run: |
         docker run --rm -v "$(pwd)/artifacts:/kernel/linux/artifacts" ps4-linux-docker
 
-    - name: Upload bzImage artifact
-      uses: actions/upload-artifact@b6a204a6e21d86a9f5a5e4c8c407d7b71ad9e8b0
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
       with:
         name: bzImage
         path: artifacts/bzImage
