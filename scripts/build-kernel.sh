@@ -27,5 +27,6 @@ sed -i 's,CONFIG_EXTRA_FIRMWARE_DIR="/lib/firmware",CONFIG_EXTRA_FIRMWARE_DIR="l
 make -j$(nproc)
 # Make bzImage
 make bzImage
-cp arch/x86/boot/bzImage /kernel/linux/
+mkdir -p /kernel/linux/artifacts
+cp arch/x86/boot/bzImage /kernel/linux/artifacts
 echo "Kernel build completed successfully!"

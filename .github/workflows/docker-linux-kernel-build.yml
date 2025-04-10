@@ -1,4 +1,4 @@
-name: Docker PS4 Linux Kernel Build
+name: Build PS4 Linux Kernel
 
 on:
   workflow_dispatch:
@@ -16,10 +16,10 @@ jobs:
 
     - name: Run Docker container to build kernel
       run: |
-        docker run --rm -v "$(pwd)/config:/kernel/linux/config" -v "$(pwd)/artifacts:/kernel/linux" ps4-linux-docker
+        docker run --rm -v "$(pwd)/artifacts:/kernel/linux/artifacts" ps4-linux-docker
         
     - name: Upload bzImage artifact
       uses: actions/upload-artifact@v3
       with:
         name: bzImage
-        path: linux/bzImage
+        path: artifacts/bzImage
