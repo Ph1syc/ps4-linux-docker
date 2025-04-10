@@ -25,7 +25,6 @@ jobs:
         working-directory: ./linux
         run: |
           cp config .config
-          
 
       - name: Install wifi
         working-directory: ./linux
@@ -35,7 +34,7 @@ jobs:
             wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/mrvl/sd8797_uapsta.bin
             cd ../../..
             sed -i 's,CONFIG_EXTRA_FIRMWARE_DIR="/lib/firmware",CONFIG_EXTRA_FIRMWARE_DIR="lib/firmware",g' .config
-
+            
       - name: Build kernel
         working-directory: ./linux
         run: |
