@@ -11,20 +11,20 @@ This repository provides a Dockerized environment for building the Linux kernel 
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/FalsePhilosopher/PS4-Linux-Docker.git
-   cd PS4-Linux-Docker
+   git clone https://github.com/FalsePhilosopher/ps4-linux-docker.git
+   cd ps4-linux-docker
    ```
 
 2. Build the Docker image:
    ```bash
-   docker build -t PS4-Linux-Docker .
+   docker build -t ps4-linux-docker .
    ```
 
 3. Run the Docker container and mount the required configuration:
    ```bash
    docker run --rm -it \
        -v "$(pwd)/config:/kernel/linux/config" \
-       PS4-Linux-Docker
+       ps4-linux-docker
    ```
 
 4. The kernel and modules will be built inside the Docker container.
