@@ -1,0 +1,19 @@
+name: Docker Linux Kernel Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-linux-kernel:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: docker build -t PS4-Linux-Docker .
+
+    - name: Run Docker container to build kernel
+      run: |
+        docker run --rm -v "$(pwd)/config:/kernel/config" PS4-Linux-Docker
