@@ -1,4 +1,4 @@
-name: Compile Linux Kernel for PS4
+name: Compile Kernel 6.12.y
 
 on:
   workflow_dispatch:
