@@ -1,4 +1,4 @@
-name: Build PS4 Linux Kernel
+name: Build PS4 Linux Kernel Docker
 
 on:
   workflow_dispatch:
