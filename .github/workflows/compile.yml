@@ -13,7 +13,7 @@ jobs:
 
       - name: Clone the target Linux repo
         run: |
-          git clone --branch ps4-linux-6.12.y https://github.com/crashniels/linux.git linux
+          git clone --recursive --branch ps4-linux-6.12.y https://github.com/crashniels/linux.git linux
 
       - name: Install dependencies
         run: |
