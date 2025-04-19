@@ -1,4 +1,4 @@
-name: Compile Kernel 5.15.y-baikal
+name: Compile Kernel 5.4.99-baikal
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ jobs:
 
       - name: Clone the target Linux repo
         run: |
-          git clone --recursive --branch ps4-linux-5.15.y-baikal https://github.com/crashniels/linux.git linux
+          git clone --recursive https://github.com/Ph1syc/ps4-linux-kernel-5.4.99-baikal linux
 
       - name: Install dependencies
         run: |
