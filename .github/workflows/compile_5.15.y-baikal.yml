@@ -1,0 +1,52 @@
+name: Compile Kernel 5.15.y-baikal
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-kernel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout this repository (current repo)
+        uses: actions/checkout@v4
+
+      - name: Clone the target Linux repo
+        run: |
+          git clone --recursive --branch ps4-linux-5.15.y-baikal https://github.com/crashniels/linux.git linux
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential flex bison libssl-dev libelf-dev bc dwarves clang llvm
+
+      - name: Copy custom config
+        working-directory: ./linux
+        run: |
+          cp config .config
+
+      - name: Install WiFi firmware
+        working-directory: ./linux
+        run: |
+          mkdir -p lib/firmware/mrvl
+          cd lib/firmware/mrvl
+          wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/mrvl/sd8897_uapsta.bin
+          wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/mrvl/sd8797_uapsta.bin
+          cd ../../..
+          sed -i 's,CONFIG_EXTRA_FIRMWARE_DIR="/lib/firmware",CONFIG_EXTRA_FIRMWARE_DIR="lib/firmware",g' .config
+
+      - name: Build kernel
+        working-directory: ./linux
+        run: |
+          make -j$(nproc)
+
+      - name: Build bzImage
+        working-directory: ./linux
+        run: |
+          make bzImage
+
+      - name: Upload bzImage as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bzImage
+          path: linux/arch/x86/boot/bzImage
